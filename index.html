@@ -3,22 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>そろばんアプリ</title>
+    <title>べんきょうRPG</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="abacus">
-        <div class="column">
-            <div class="bead upper-bead" data-value="5"></div>
-            <div class="separator"></div>
-            <div class="bead lower-bead" data-value="1"></div>
-            <div class="bead lower-bead" data-value="1"></div>
-            <div class="bead lower-bead" data-value="1"></div>
-            <div class="bead lower-bead" data-value="1"></div>
-        </div>
+    <header>
+        <nav>
+            <button onclick="showTab('gacha')">スタンプ、ガチャ</button>
+            <button onclick="showTab('inventory')">キャラ、もちもの</button>
+            <button onclick="showTab('enemy')">てき</button>
+            <button onclick="showTab('calendar')">カレンダー</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="gacha" class="tab-content active">
+            <h2>スタンプとガチャ</h2>
+            <p>きょうのガチャのこりかいすう: <span id="gacha-count">5</span>かい</p>
+            <form id="gacha-form">
+                <label for="study-content">きょうの べんきょうないよう:</label><br>
+                <textarea id="study-content" rows="4" cols="50" required></textarea><br><br>
+                
+                <label for="gacha-type">ガチャをえらんでね:</label>
+                <select id="gacha-type">
+                    <option value="weapon">ぶき ガチャ</option>
+                    <option value="pet">ペット ガチャ</option>
+                </select><br><br>
+                
+                <button type="submit">ガチャをまわす</button>
+            </form>
+            <div id="gacha-result"></div>
         </div>
 
-    <script src="script.js"></script>
+        <div id="inventory" class="tab-content">
+            <h2>キャラクターと アイテムいちらん</h2>
+            <div id="character-status"></div>
+            <hr>
+            <h3>そうび</h3>
+            <div id="equipped-items" class="item-list"></div>
+            <hr>
+            <h3>もちもの</h3>
+            <div id="unequipped-items" class="item-list"></div>
+        </div>
+
+        <div id="enemy" class="tab-content">
+            <h2>てき</h2>
+            <div id="enemy-container"></div>
+            <div id="battle-log"></div>
+        </div>
+        
+        <div id="calendar" class="tab-content">
+            <h2>カレンダー</h2>
+            <ul id="study-log-list"></ul>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
